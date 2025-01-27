@@ -2,7 +2,6 @@ export default function InfosContainer({ infos }: { infos: any }) {
 
     return (
         <div className="infosContainer">
-            <h3>Infos</h3>
             <h4>{infos.name.official}</h4>
             <div className="flags">
                 <p>Flag</p>
@@ -18,7 +17,7 @@ export default function InfosContainer({ infos }: { infos: any }) {
                 <li>Area : {infos.area} square km</li>
                 <li>Driving side : {infos.car.side}</li>
                 <li>Currencies : {infos.currencies ? Object.values(infos.currencies).map((currency: any) => currency.name) : "No"}</li>
-                <li>Languages : {infos.languages ? Object.values(infos.languages).map((language: any) => language) : "No"}</li>
+                <li>Languages : {infos.languages ? <ol>{Object.values(infos.languages).map((language: any) => <li>{language}</li>)}</ol> : "No"}</li>
                 <li>Region : {infos.region}</li>
                 <li>Start of the week : {infos.startOfWeek}</li>
                 <li>UN member : {infos.unMember ? "Yes" : "No"}</li>
