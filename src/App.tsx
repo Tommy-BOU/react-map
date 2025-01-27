@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import MapChart from "/react-map/components/MapChart";
-import ErrorMessage from "/react-map/components/ErrorMessage";
-import Header from "/react-map/components/header";
-import Footer from "/react-map/components/footer";
+import MapChart from "./components/MapChart";
+import ErrorMessage from "./components/ErrorMessage";
+import Header from "./components/header";
+import Footer from "./components/footer";
 import { CircleLoader } from "react-spinners";
-import "/react-map/App.css";
+import "./App.css";
 
 function App() {
   const [datas, setDatas] = useState([]);
