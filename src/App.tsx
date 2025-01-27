@@ -45,9 +45,9 @@ function App() {
     <>
       <Header />
       <div className="content">
-        {Object.keys(selectedCountry).length > 0 && <InfosContainer infos={selectedCountry} />}
         {error.length > 0 && <ErrorMessage message={error} />}
         {loading === true ? <CircleLoader color="#36d7b7" /> : <div className="mapContainer"><MapChart datas={datas} callBack={CountrySelector}/></div>}
+        {Object.keys(selectedCountry).length > 0 && <InfosContainer infos={selectedCountry} />}
       </div>
 
       <Footer />
