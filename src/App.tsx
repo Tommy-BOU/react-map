@@ -5,11 +5,13 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import { CircleLoader } from "react-spinners";
 import "./App.css";
+import InfosContainer from "./components/InfosContainer";
 
 function App() {
-  const [datas, setDatas] = useState([]);
+  const [datas, setDatas] = useState<any>({});
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState<any>({});
 
   useEffect(() => {
     fetchData();
@@ -31,12 +33,21 @@ function App() {
     }
   };
 
+  function CountrySelector(country: any) {
+    let countryInfos = datas.find((data: any) => data.cca2 === country.properties.wb_a2);
+    countryInfos === undefined ? countryInfos = datas.find((data: any) => data.cca3 === country.properties.iso_a3) : countryInfos;
+    countryInfos === undefined ? countryInfos = datas.find((data: any) => data.cca3 === country.properties.iso_a3_eh) : countryInfos;
+    setSelectedCountry(countryInfos);
+    console.log(selectedCountry);
+  }
+
   return (
     <>
       <Header />
       <div className="content">
+        {Object.keys(selectedCountry).length > 0 && <InfosContainer infos={selectedCountry} />}
         {error.length > 0 && <ErrorMessage message={error} />}
-        {loading === true ? <CircleLoader color="#36d7b7" /> : <MapChart datas={datas} />}
+        {loading === true ? <CircleLoader color="#36d7b7" /> : <div className="mapContainer"><MapChart datas={datas} callBack={CountrySelector}/></div>}
       </div>
 
       <Footer />

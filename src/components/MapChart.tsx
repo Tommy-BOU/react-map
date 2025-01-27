@@ -3,7 +3,7 @@ import { ComposableMap, Geographies, Geography } from "react-simple-maps"
 const geoUrl =
   "/react-map/custom.geo.json"
 
-export default function MapChart({ datas }: {datas: Array<any>}  ) {
+export default function MapChart<T>({ datas, callBack }: {datas: Array<any>, callBack: (arg: T) => void}  ) {
 
     function ApplyContinentColor( country:any ) {
       let countryData = datas.find((data) => data.cca2 === country.properties.wb_a2);
@@ -43,6 +43,7 @@ export default function MapChart({ datas }: {datas: Array<any>}  ) {
         {({ geographies }) =>
           geographies.map((geo) => (
             <Geography key={geo.rsmKey} geography={geo} id={geo.rsmKey}
+            onClick={() => callBack(geo)}
             fill={ApplyContinentColor(geo)}
             style={{
                     default: { outline: "none", stroke:"darkgrey", },

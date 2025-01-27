@@ -22,6 +22,7 @@ header, footer{
 
 header{
   position:absolute;
+  flex-direction: column;
   top:0;
 }
 
@@ -32,29 +33,84 @@ footer{
 
 @media screen and (max-width: 600px)
 {
-  .content{
+  .mapContainer{
     width: 100%;
+    position:relative;
+  }
+
+  .infosContanier{
+    width: 100%;
+    position:relative;
+  }
+
+  .content{
+    flex-direction: column;
   }
 }
 
 @media screen and (max-width: 1280px)
 {
-  .content{
-    width: 90%;
+  .mapContainer{
+    width: 70%;
+    position: absolute;
+    right:2%;
+  }
+}
+
+@media screen and (min-width: 600px)
+{
+  .infosContainer{
+    width: 25%;
+    position:absolute;
+    left:0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
 }
 
 @media screen and (min-width: 1281px)
 {
-  .content{
-    width: 65%;
+  .mapContainer{
+    width: 50%;
+    position: absolute;
+    right:2%;
   }
+  
+}
+
+.infosContainer ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.flags{
+  width: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.images{
+  width: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.images img{
+  width: 50px;
+  height: auto;
 }
 
 .content{
+  width:100%;
   height: auto;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
 }
@@ -77,3 +133,4 @@ footer{
 a{
   color:white;
 }
+
