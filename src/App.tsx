@@ -23,8 +23,9 @@ function App() {
         throw new Error("Failed to fetch data");
       }
       const data = await res.json();
-      await setDatas(data);
+      setDatas(data);
       setLoading(false);
+      console.log(data);
     } catch (error) {
       console.log(error);
       setError("Error fetching data");
