@@ -5,9 +5,10 @@ const geoUrl =
 
 export default function MapChart({ datas }: {datas: Array<any>}  ) {
 
-    function ApplyContinentColor(country2: string, country3: string) {
-      let countryData = datas.find((data) => data.cca2 === country2);
-        countryData === undefined ? countryData = datas.find((data) => data.cca3 === country3) : countryData;
+    function ApplyContinentColor( country:any ) {
+      let countryData = datas.find((data) => data.cca2 === country.properties.wb_a2);
+        countryData === undefined ? countryData = datas.find((data) => data.cca3 === country.properties.iso_a3) : countryData;
+        countryData === undefined ? countryData = datas.find((data) => data.cca3 === country.properties.iso_a3_eh) : countryData;
       if (countryData !== undefined){
         if(countryData.continents.includes("Europe")){
             return "blue"
@@ -41,8 +42,8 @@ export default function MapChart({ datas }: {datas: Array<any>}  ) {
       <Geographies geography={geoUrl}>
         {({ geographies }) =>
           geographies.map((geo) => (
-            <Geography key={geo.rsmKey} geography={geo} id={geo.rsmKey} title={geo.properties.name}
-            fill={ApplyContinentColor(geo.properties.wb_a2, geo.properties.wb_a3)}
+            <Geography key={geo.rsmKey} geography={geo} id={geo.rsmKey}
+            fill={ApplyContinentColor(geo)}
             style={{
                     default: { outline: "none", stroke:"darkgrey", },
                     hover: { outline: "none", stroke: "grey" },

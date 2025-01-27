@@ -7,6 +7,7 @@
 body{
   height: 100vh;
   width:100%;
+  font-family: roboto;
 }
 
 header, footer{
@@ -20,26 +21,33 @@ header, footer{
 }
 
 header{
-  position:relative;
+  position:absolute;
   top:0;
 }
 
 footer{
-  position:relative;
+  position:absolute;
   bottom: 0;
 }
 
-@media screen and (min-width: 600px)
+@media screen and (max-width: 600px)
 {
   .content{
-    width: 71%;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1280px)
+{
+  .content{
+    width: 90%;
   }
 }
 
 @media screen and (min-width: 1281px)
 {
   .content{
-    width: 55%;
+    width: 65%;
   }
 }
 
@@ -63,4 +71,9 @@ footer{
 
 .rsm-svg{
   border: 1px solid black;
+  padding-right: 50px;
+}
+
+a{
+  color:white;
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import MapChart from "./components/worldMap";
+import MapChart from "./components/MapChart";
 import ErrorMessage from "./components/ErrorMessage";
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -25,7 +25,6 @@ function App() {
       const data = await res.json();
       setDatas(data);
       setLoading(false);
-      console.log(data);
     } catch (error) {
       console.log(error);
       setError("Error fetching data");
