@@ -1,7 +1,7 @@
 import { ComposableMap, Geographies, Geography } from "react-simple-maps"
 
 const geoUrl =
-  "public/custom.geo.json"
+  "/react-map/custom.geo.json"
 
 export default function MapChart({ datas }: {datas: Array<any>}  ) {
 
@@ -10,11 +10,11 @@ export default function MapChart({ datas }: {datas: Array<any>}  ) {
         countryData === undefined ? countryData = datas.find((data) => data.cca3 === country.properties.iso_a3) : countryData;
         countryData === undefined ? countryData = datas.find((data) => data.cca3 === country.properties.iso_a3_eh) : countryData;
       if (countryData !== undefined){
-        if(countryData.continents.includes("Europe")){
-            return "blue"
-        }
-        else if (countryData.continents.includes("Asia")){
+        if(countryData.continents.includes("Asia")){
             return "green"
+        }
+        else if (countryData.continents.includes("Europe")){
+            return "Blue"
         }
         else if (countryData.continents.includes("North America")){
             return "red"
