@@ -20,7 +20,9 @@ function App() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`https://restcountries.com/v3.1/all?fields=name,capital,cca2,cca3,cca3_eh,region,population,flags,continents`);
+      const res = await fetch(
+        `https://restcountries.com/v3.1/all?fields=name,flags,capital,cca2,cca3,population,flags,currencies,languages,area,continents`
+      );
       if (!res.ok) {
         throw new Error("Failed to fetch data");
       }
@@ -34,9 +36,19 @@ function App() {
   };
 
   function CountrySelector(country: any) {
-    let countryInfos = datas.find((data: any) => data.cca2 === country.properties.wb_a2);
-    countryInfos === undefined ? countryInfos = datas.find((data: any) => data.cca3 === country.properties.iso_a3) : countryInfos;
-    countryInfos === undefined ? countryInfos = datas.find((data: any) => data.cca3 === country.properties.iso_a3_eh) : countryInfos;
+    let countryInfos = datas.find(
+      (data: any) => data.cca2 === country.properties.wb_a2
+    );
+    countryInfos === undefined
+      ? (countryInfos = datas.find(
+          (data: any) => data.cca3 === country.properties.iso_a3
+        ))
+      : countryInfos;
+    countryInfos === undefined
+      ? (countryInfos = datas.find(
+          (data: any) => data.cca3 === country.properties.iso_a3_eh
+        ))
+      : countryInfos;
     setSelectedCountry(countryInfos);
     console.log(selectedCountry);
   }
@@ -46,8 +58,16 @@ function App() {
       <Header />
       <div className="content">
         {error.length > 0 && <ErrorMessage message={error} />}
-        {loading === true ? <CircleLoader color="#36d7b7" /> : <div className="mapContainer"><MapChart datas={datas} callBack={CountrySelector}/></div>}
-        {Object.keys(selectedCountry).length > 0 && <InfosContainer infos={selectedCountry} />}
+        {loading === true ? (
+          <CircleLoader color="#36d7b7" />
+        ) : (
+          <div className="mapContainer">
+            <MapChart datas={datas} callBack={CountrySelector} />
+          </div>
+        )}
+        {Object.keys(selectedCountry).length > 0 && (
+          <InfosContainer infos={selectedCountry} />
+        )}
       </div>
 
       <Footer />

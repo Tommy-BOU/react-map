@@ -1,0 +1,1 @@
+To deploy the app to the github page : npm run deploy
