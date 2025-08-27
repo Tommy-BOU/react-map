@@ -2,7 +2,7 @@ export default function InfosContainer({ infos }: { infos: any }) {
 
     return (
         <div className="infosContainer">
-            <h4>{infos.name.official }</h4>
+            <h4>{infos.name.official}</h4>
             <div className="flags">
                 <p>Flag</p>
                 <p>Coat of arms</p>
